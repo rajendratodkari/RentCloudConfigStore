@@ -1,0 +1,11 @@
+
+spring:
+  application:
+    name: oauth
+  # config:
+  #   import: configserver:http://localhost:8000
+  cloud:
+    config:
+      uri: http://localhost:8000
+  profiles:
+    active: "@build.profile.id@"
