@@ -1,11 +1,27 @@
+server:
+  port: 9000
 
 spring:
-  application:
-    name: oauth
-  # config:
-  #   import: configserver:http://localhost:8000
-  cloud:
-    config:
-      uri: http://localhost:8000
-  profiles:
-    active: "@build.profile.id@"
+  datasource:
+    url: jdbc:mysql://localhost:3306/oAuthDb?createDatabaseIfNotExist=true&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # driver-class-name: com.mysql.jdbc.Driver
+    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+    properties:
+      hibernate:
+        show-sql: true
+        format-sql: true
+  
+logging:
+  level:
+    org:
+      hibernate:
+        type: trace
